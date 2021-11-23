@@ -1,0 +1,34 @@
+{
+  "name": "Taiwan-eBus",
+  "version": "1.0.0",
+  "description": "The F2E 3rd",
+  "main": "index.js",
+  "repository": "git@github.com:ccok12345678/Taiwan-eBus.git",
+  "author": "Karl Yang <ccok12345678@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "D": "^1.0.0",
+    "autoprefixer": "^10.4.0",
+    "axios": "^0.24.0",
+    "bootstrap": "^5.1.3"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.27.7",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-data": "^1.3.1",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^8.0.0",
+    "gulp-load-plugins": "^2.0.7",
+    "gulp-order": "^1.2.0",
+    "gulp-postcss": "^9.0.1",
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^5.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "minimist": "^1.2.5",
+    "node-sass": "^6.0.1",
+    "path": "^0.12.7"
+  }
+}
