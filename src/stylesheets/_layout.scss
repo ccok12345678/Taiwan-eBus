@@ -1,0 +1,11 @@
+.navbar-brand {
+  margin: 4px 0px;
+}
+
+.offcanvas-backdrop {
+  backdrop-filter: blur(4px);
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
