@@ -1,0 +1,9 @@
+mixin heads
+  if (path === 'index.html')
+    link(rel='stylesheet' href='stylesheets/all.css')
+    link(rel='shortcut icon' href='images/favicon.png'  type='image/x-icon')
+    meta(property='og:image' content='images/logo_og.png')
+  else
+    link(rel='stylesheet' href='../stylesheets/all.css')
+    link(rel='shortcut icon' href='../images/favicon.png' type='image/x-icon')
+    meta(property='og:image' content='../images/logo_og.png')

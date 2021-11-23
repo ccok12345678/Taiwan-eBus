@@ -1,7 +1,6 @@
 const { src, dest, watch, series } = require('gulp');
 const $ = require('gulp-load-plugins')();
 const sass = require('gulp-sass')(require('node-sass'));
-const monimist = require('minimist');
 const del = require('del');
 const autoprefixer = require('autoprefixer');
 const browserSync = require('browser-sync');
@@ -9,6 +8,8 @@ const path = require('path');
 const minimist = require('minimist');
 const { pipe } = require('stdout-stream');
 const { on } = require('events');
+// import imagemin from 'node_modules/gulp-imagemin/index.js';
+// const imagemin = require('gulp-imagemin');
 
 // 環境設定
 const envOpts = {
@@ -31,27 +32,29 @@ function buildTemplate() {
     .pipe($.pug({
       pretty: true
     }))
-    .pipe(dest('./public'))
+    .pipe(dest('./public/'))
     .pipe(browserSync.stream());
 }
 
 exports.pug = buildTemplate;
 
+
 function buildStyle() {
-  return src('/stylesheets/*scss')
+  const plugins = [
+    autoprefixer()
+  ];
+  return src('./src/stylesheets/*.scss')
     .pipe($.sourcemaps.init())
     .pipe(sass({
       outputStyle: 'nest',
       includePaths: [
-        './node_modeles/bootstrap/scss'
+        './node_modules/bootstrap/scss'
       ]
     }))
     .on('error', sass.logError)
-    .pipe($.postcss({
-      autoprefixer()
-    }))
+    .pipe($.postcss(plugins))
     .pipe($.if(opts.env === 'production', $.cleanCss()))
-    .pipe($.sourcrmaps.write('.'))
+    .pipe($.sourcemaps.write('.'))
     .pipe(dest('./public/stylesheets'))
     .pipe(browserSync.stream());
 }
@@ -59,7 +62,7 @@ function buildStyle() {
 exports.sass = buildStyle;
 
 function buildScript() {
-  return src('./js/**/*.js')
+  return src('./src/js/**/*.js')
     .pipe($.sourcemaps.init())
     .pipe($.if(opts.env === 'production', $.uglify({
       compress : {
@@ -68,7 +71,7 @@ function buildScript() {
     })))
     .pipe($.sourcemaps.write('.'))
     .pipe(dest('./public/js'))
-    .pipe(browserSync());
+    .pipe(browserSync.stream());
 }
 
 exports.script = buildScript;
@@ -91,8 +94,8 @@ function vendorJS() {
 exports.vendor = vendorJS;
 
 function imageMin() {
-  return scr('./images/**/*')
-    .pipe($.if(opts.env === 'production', $.imagemin()))
+  return src('./src/images/**/*')
+    // .pipe($.if(opts.env === 'production', $.imagemin()))
     .pipe(dest('./public/images'))
     .pipe(browserSync.stream());
 }
@@ -102,7 +105,7 @@ exports.image = imageMin;
 function browser_sync() {
   browserSync.init({
     server: {
-      basDir: './public',
+      baseDir: './public',
       index: 'index.html'
     },
     reloadDebounce: 3
@@ -111,20 +114,20 @@ function browser_sync() {
 
 exports.bs = browser_sync;
 
-function watch() {
+function watching() {
   watch('./src/stylesheets/**/*.scss', buildStyle)
     .on('unlink', e => del(`./public/stylesheets/**/${path.basename(e, 'scss')}.css`));
   watch('./src/js/**/*.js', buildScript)
-    on('unlink', e => del(`./public/**/${path.basename(e)}`));
+    .on('unlink', e => del(`./public/**/${path.basename(e)}`));
   watch('./src/pages/**/*.pug', buildTemplate)
-    on('unlink', e => del(`./public/pages/**/${path.basename(e, 'pug')}.html`));
+    .on('unlink', e => del(`./public/pages/**/${path.basename(e, 'pug')}.html`));
   watch('./src/images/**/*', imageMin)
-    on('unlink', e => del(`./public/images/**/${path.basename(e)}`));
+    .on('unlink', e => del(`./public/images/**/${path.basename(e)}`));
 
   browser_sync();
 }
 
-exports.watch= watch;
+exports.watch= watching;
 
 exports.build = series(
   clean,
@@ -141,5 +144,6 @@ exports.default = series(
   buildScript,
   vendorJS,
   imageMin,
+  watching,
   browser_sync
 )
