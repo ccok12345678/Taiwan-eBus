@@ -1,1 +1,20 @@
-h2 hiiii
+include ../mixins/breadcrumb.pug
+
+nav.d-flex.mx-lg-6.mx-md-5.mx-3.px-0(aria-label='breadcrumb')
+  ol.breadcrumb.my-2.fs-h6
+    li.breadcrumb-item.d-none.d-sm-block
+      a.text-decoration-none(href='../index.html') 首頁
+    +breadcrumb
+  .ms-auto.my-auto.d-flex
+    a.text-decoration-none.me-2.py-2.visually-hidden(href="#" title="取得網址") 
+      img.me-1(src="../images/icon_link.svg", alt="information")
+      | 複製連結
+    a.text-decoration-none.ms-1.me-2.py-2(href="#" title="時刻表")
+      img.me-1(src="../images/icon_info.svg", alt="information")
+      | 時刻表
+    a.text-decoration-none.ms-1.me-2.py-2.visually-hidden(href="#")
+      img.me-1(src="../images/icon_map.svg", alt="information")
+      | 地圖
+    a.text-decoration-none.ms-1.me-2.py-2.visually-hidden(href="#")
+      img.me-1(src="../images/icon_pin.svg" )
+      | 路線

@@ -1,0 +1,31 @@
+mixin breadcrumb
+  if (path === "taipei.html")
+    li.breadcrumb-item.active.d-none.d-sm-block(aria-current='page') 台北市、新北市
+    .active.d-block.d-sm-none(aria-current='page')
+      img.me-1(src="../images/icon_location.svg")
+      | 台北市、新北市
+  else if (path === "taoyuan.html")
+    li.breadcrumb-item.active.d-none.d-sm-block(aria-current='page') 桃園市
+    .active.d-block.d-sm-none(aria-current='page')
+      img.me-1(src="../images/icon_location.svg")
+      | 桃園市
+  else if (path === "taichung.html")
+    li.breadcrumb-item.active.d-none.d-sm-block(aria-current='page') 台中市
+    .active.d-block.d-sm-none(aria-current='page')
+      img.me-1(src="../images/icon_location.svg")
+      | 台中市
+  else if (path === "tainan.html")
+    li.breadcrumb-item.active.d-none.d-sm-block(aria-current='page') 台南市
+    .active.d-block.d-sm-none(aria-current='page')
+      img.me-1(src="../images/icon_location.svg")
+      | 台南市
+  else if (path === "kaohsiung.html")
+    li.breadcrumb-item.active.d-none.d-sm-block(aria-current='page') 高雄市
+    .active.d-block.d-sm-none(aria-current='page')
+      img.me-1(src="../images/icon_location.svg")
+      | 高雄市
+  else
+    li.breadcrumb-item.active.d-none.d-sm-block(aria-current='page') 其他
+    .active.d-block.d-sm-none(aria-current='page')
+      img.me-1(src="../images/icon_location.svg")
+      | 其他
