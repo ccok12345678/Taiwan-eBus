@@ -2,7 +2,11 @@ extend pages/layout.pug
 
 block head
   - const path = "index.html"
-  include pages/partials/index_head.pug
+  include pages/partials/layout_head.pug
+  
+block navbar
+  include pages/partials/layout_navbar.pug
 
 block content
   include pages/partials/index_banner.pug
+  include pages/partials/index_cards.pug

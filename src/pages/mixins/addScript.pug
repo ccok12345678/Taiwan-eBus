@@ -1,0 +1,7 @@
+mixin addScript 
+  if (path === "index.html")
+    script(src="./js/vendor.js") 
+    script(src="./js/main.js" type="module") 
+  else 
+    script(src="../js/vendor.js") 
+    script(src="../js/main.js" type="module") 

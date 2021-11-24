@@ -1,0 +1,11 @@
+extend layout.pug
+
+block head 
+  - const path = "tainan.html"
+  include partials/layout_head.pug
+
+block navbar
+  include partials/layout_navbar.pug
+
+block content 
+  include partials/layout_breadcrumb.pug

@@ -1,0 +1,18 @@
+include ../mixins/navBar_brand.pug
+
+nav.navbar.navbar-expand-lg.navbar-light.bg-white.text-black.fw-normal.shadow.sticky-sm-top
+  .container-lg.mx-lg-6.mx-md-5.mx-3
+    +navBar_brand
+    .navbar-nav.fs-15.w-45.justify-content-between.flex-row.d-none.d-md-flex.nowrap
+      a.nav-link.text-black.fw-normal.hover-slide(href="#" title="施工中……") 附近站牌
+      a.nav-link.text-black.fw-normal.hover-slide(href="#" title="施工中……") 路線規劃
+      a.nav-link.text-black.fw-normal.hover-slide(href="#" title="施工中……") 站點查詢
+      a.nav-link.text-black.fw-normal.hover-slide(href="#" title="施工中……") 收藏站牌
+    .navbar-nav.fs-15.flex-row.d-none.d-lg-flex
+      i.bi.bi-globe.fs-h2.me-1
+      a.nav-link.text-black.fw-bold(href="#") 中文
+      .my-auto.text-black |
+      a.nav-link.text-black.fw-normal.text-muted(href="#" title="Building……") English
+    .navbar-nav.fs-15.d-md-none.ms-auto
+      a.nav-link.text-black.fs-h6.me-2(href="#" title="施工中……") 附近站牌
+    include layout_offcanvas.pug

@@ -1,0 +1,13 @@
+.banner {
+  background-image: url("../images/banner_index.png");
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 109px 0 136px 149px;
+
+  &-text {
+    letter-spacing: .4em;
+  }
+
+  @media (max-width: 575.98px) {
+    padding: 32px 0 27px 38px;
+  }
+}
