@@ -1,0 +1,45 @@
+.box {
+  &-1 {
+    background: #4d0;
+  }
+
+  &-2{
+    background: #000;
+  }
+}
+
+.aside-header {
+
+  &:focus-within .busRouteInput,
+  &:focus-within .busRouteBtn {
+    box-shadow: none;
+    background-color: #d5d5d5;
+    border: none;
+  }
+
+  &:focus-within .busRouteBtn {
+    background-image: url("../images/icon_delete.svg");
+  }
+
+  &:focusout  .busRouteBtn{
+    border: none;
+  }
+}
+
+.busRouteInput {
+  background: #eee;
+  border-radius: 10px 0 0 10px;
+}
+
+.busRouteBtn {
+  background-image: url("../images/icon_search.svg");
+  background-repeat: no-repeat;
+  background-size: 15.21px 14.36px;
+  background-position: center center;
+  transition: 0s;
+  border-radius: 0 10px 10px 0;
+
+  &:hover {
+    background-color: #eee;
+  }
+}

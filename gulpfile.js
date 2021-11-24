@@ -108,7 +108,7 @@ function browser_sync() {
       baseDir: './public',
       index: 'index.html'
     },
-    reloadDebounce: 3
+    reloadDebounce: 0
   })
 }
 

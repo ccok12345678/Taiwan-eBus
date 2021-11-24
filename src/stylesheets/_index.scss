@@ -1,3 +1,11 @@
+.navbar {
+  
+  @media (max-width: 575.98px) {
+    position: sticky;
+    top: 0;
+  }
+}
+
 .banner {
   background-image: url("../images/banner_index.png");
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
