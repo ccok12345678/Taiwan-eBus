@@ -15,7 +15,7 @@ export default function getRouteDataByCity() {
     city = 'Taichung';
   } else if (document.querySelector('#tainan')) {
     city = 'Tainan';
-  } else if (document.querySelector('#kaoihsiung')) {
+  } else if (document.querySelector('#kaohsiung')) {
     city = 'Kaohsiung';
   } else {
     return;
@@ -41,6 +41,15 @@ export default function getRouteDataByCity() {
 
       const searchInput = document.querySelector('#routeSearchInput');
       searchInput.addEventListener('input', e => {
+        searchRoutes(routes, city);
+      })
+
+      const buttonKeyboard = document.querySelector('#buttonKeyboard');
+      buttonKeyboard.addEventListener('click', e => {
+        if (e.target.nodeName !== 'BUTTON') {
+          return;
+        }
+        
         searchRoutes(routes, city);
       })
 
