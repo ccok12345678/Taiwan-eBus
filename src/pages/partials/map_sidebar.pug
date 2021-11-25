@@ -1,5 +1,48 @@
-aside.vh-100
+aside.vh-100.d-flex.flex-column
   .aside-header.input-group.p-3
-    input#busRouteInput.busRouteInput.form-control.border-0.rounded-start-3(type='search' placeholder="輸入公車路線 / 起迄方向名或關鍵字" aria-label="bus routes" aria-describedby='button-addon2')
-    button#busRouteBtn.busRouteBtn.btn.btn-ee.px-3(type='button') 
-      //- i.bi.bi-search
+    input#busRouteInput.busRouteInput.form-control.border-0.rounded-start-3(type='text' placeholder="輸入公車路線 / 起迄方向名或關鍵字" aria-label="bus routes" aria-describedby='button-addon2')
+    button#busRouteBtn.busRouteBtn.btn.btn-ee.py-2.px-db.py-2.rounded-10-3(type='button')
+  .aside-body.mh-100.overflow-auto
+    #busRouteResult.px-4.pt-2
+      .list-group.list-group-flush
+        a.list-group-item.d-flex.justify-content-between.hover-slide(href="#")
+          div
+            h4.fs-20.fw-bold.mb-0 300
+            p.fs-14.text-88.mb-0 台中區監理所 - 台中火車站
+          div.d-flex.flex-column
+            img(src="../images/icon_heart.svg").mb-auto.ms-auto.hover-heart-fill
+            p.fs-14.text-88.mb-0 台中
+        a.list-group-item.d-flex.justify-content-between.hover-slide(href="#")
+          div
+            h4.fs-20.fw-bold.mb-0 301
+            p.fs-14.text-88.mb-0 台中區監理所 - 台中火車站
+          div.d-flex.flex-column
+            img(src="../images/icon_heart.svg").mb-auto.ms-auto.hover-heart-fill
+            p.fs-14.text-88.mb-0 台中
+        a.list-group-item.d-flex.justify-content-between.hover-slide(href="#")
+          div
+            h4.fs-20.fw-bold.mb-0 302
+            p.fs-14.text-88.mb-0 台中區監理所 - 台中火車站
+          div.d-flex.flex-column
+            img(src="../images/icon_heart.svg").mb-auto.ms-auto.hover-heart-fill
+            p.fs-14.text-88.mb-0 台中
+
+
+
+  .aside-footer.mt-auto.text-center
+    #buttonKeyboard.bg-light.py-4
+      button.fs-14.btn.btn-d5.px-0.py-2.w-20.mb-2.me-1.rounded-10 1
+      button.fs-14.btn.btn-d5.px-0.py-2.w-20.mb-2.mx-2.rounded-10 2
+      button.fs-14.btn.btn-d5.px-0.py-2.w-20.mb-2.ms-1.rounded-10 3
+      .w-100
+      button.fs-14.btn.btn-d5.px-0.py-2.w-20.mb-2.me-1.rounded-10 4
+      button.fs-14.btn.btn-d5.px-0.py-2.w-20.mb-2.mx-2.rounded-10 5
+      button.fs-14.btn.btn-d5.px-0.py-2.w-20.mb-2.ms-1.rounded-10 6
+      .w-100
+      button.fs-14.btn.btn-d5.px-0.py-2.w-20.mb-2.me-1.rounded-10 7
+      button.fs-14.btn.btn-d5.px-0.py-2.w-20.mb-2.mx-2.rounded-10 8
+      button.fs-14.btn.btn-d5.px-0.py-2.w-20.mb-2.ms-1.rounded-10 9
+      .w-100
+      button.fs-13.btn.btn-danger.px-0.py-2.w-20.me-1.rounded-10 專用道
+      button.fs-14.btn.btn-d5.px-0.py-2.w-20.mx-2.rounded-10 0
+      button.fs-13.btn.btn-d5.px-0.py-2.w-20.ms-1.rounded-10 清除

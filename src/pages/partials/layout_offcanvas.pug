@@ -1,12 +1,10 @@
+include ../mixins/navbar_brand.pug
+
 button.d-md-none.d-block.border-0.bg-white(type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-controls="offcanvasRight")
   span.fas.fa-bars.fs-15.p-2
 #offcanvasNav.offcanvas.offcanvas-end.border-0.w-70.bd-filter.d-md-none(tabindex="-1" aria-labelledby="offcanvasRightLabel")
   .offcanvas-header.border-bottom.pb-4.pt-4
-    a.navbar-brand.d-flex.align-items-center.mt-3(href="index.html" title="台灣公車ｅ點通")
-      img.me-1(src="images/logo_header.png", alt="a man waiting the bus" width="36" height="35.87")
-      div.ms-2.my-auto
-        .fs-13.fw-bold.mb-0 台灣公車ｅ點通
-        .fs-10.fw-light.mb-0 Taiwan Bus+
+    +navBar_brand
     button.btn-close.text-reset.my-auto(type="button" data-bs-dismiss="offcanvas" aria-label="Close")
   .offcanvas-body.p-0
     .navbar-nav.fs-h6.w-45.justify-content-between.w-100

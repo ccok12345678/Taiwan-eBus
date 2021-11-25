@@ -1,6 +1,7 @@
 .navbar {
   
   @media (max-width: 575.98px) {
+    z-index: 10;
     position: sticky;
     top: 0;
   }

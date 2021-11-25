@@ -152,6 +152,7 @@ $utilities: map-merge(
       property: width,
       class: w,
       values: (
+        20: 20%,
         25: 25%,
         45: 45%,
         50: 50%,
@@ -183,6 +184,7 @@ $utilities: map-merge(
         25: 25%,
         50: 50%,
         75: 75%,
+        90: 90%,
         100: 100%,
         auto: auto
       )

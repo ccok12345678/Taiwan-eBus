@@ -48,7 +48,22 @@
   &-move:hover {
     transform: translateY(-5px);
   }
+
+  
+  &-heart-fill {
+    width: 18px;
+    height: 16px;
+    z-index: 3;
+    
+    &:hover {
+      background-image: url(../images/icon_heart_fill.svg);
+      background-position: 1px 0px;
+      background-size: 16px 17px;
+      background-repeat: no-repeat;
+    }
+  }
 }
+
 
 .text-vertical {
   
@@ -64,4 +79,21 @@
 .bg-cover {
   background-size: cover;
   background-position: center center;
+}
+
+.rounded-10 {
+  border-radius: 10px;
+}
+
+.h-auto {
+  height: auto;
+}
+
+.hidden {
+
+  &-md {
+    @media (max-width: 767.98px) {
+      @include visually-hidden
+    }
+  }
 }

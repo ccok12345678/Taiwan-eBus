@@ -1,10 +1,11 @@
 .box {
   &-1 {
     background: #4d0;
+    height: 254px;
   }
 
   &-2{
-    background: #000;
+    background: $gray-400;
   }
 }
 
@@ -21,14 +22,13 @@
     background-image: url("../images/icon_delete.svg");
   }
 
-  &:focusout  .busRouteBtn{
-    border: none;
-  }
 }
 
 .busRouteInput {
   background: #eee;
   border-radius: 10px 0 0 10px;
+  transition: .1s;
+
 }
 
 .busRouteBtn {
@@ -36,8 +36,9 @@
   background-repeat: no-repeat;
   background-size: 15.21px 14.36px;
   background-position: center center;
-  transition: 0s;
+  transition: .1s;
   border-radius: 0 10px 10px 0;
+  border: none;
 
   &:hover {
     background-color: #eee;
