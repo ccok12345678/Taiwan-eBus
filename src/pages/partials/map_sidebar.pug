@@ -1,10 +1,11 @@
 aside.vh-100.d-flex.flex-column
-  .aside-header.input-group.p-3
-    input#busRouteInput.busRouteInput.form-control.border-0.rounded-start-3(type='text' placeholder="輸入公車路線 / 起迄方向名或關鍵字" aria-label="bus routes" aria-describedby='button-addon2')
-    button#busRouteBtn.busRouteBtn.btn.btn-ee.py-2.px-db.py-2.rounded-10-3(type='button')
+  form#routeSearchForm.aside-header.input-group.p-3
+    input#routeSearchInput.busRouteInput.form-control.border-0.rounded-start-3(type='text' placeholder="輸入公車路線 / 起迄方向名或關鍵字" aria-label="bus routes" aria-describedby='button-addon2')
+    button#inputSubmitBtn.visually-hidden(type="submit") 提交
+    button#inputCancelBtn.busRouteBtn.btn.btn-ee.py-2.px-db.py-2.rounded-10-3(type='reset')
   .aside-body.mh-100.overflow-auto
     #busRouteResult.px-4.pt-2
-      .list-group.list-group-flush
+      #searchResultsContainer.list-group.list-group-flush
         a.list-group-item.d-flex.justify-content-between.hover-slide(href="#")
           div
             h4.fs-20.fw-bold.mb-0 300

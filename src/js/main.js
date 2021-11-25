@@ -1,1 +1,3 @@
-const h = 'hi';
+import init from "./modules/init.js";
+
+init();
