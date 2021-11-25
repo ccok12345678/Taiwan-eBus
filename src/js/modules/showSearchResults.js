@@ -19,7 +19,7 @@ export default function showSearchResults(routesData, city) {
         destination = route.DestinationStopNameZh;
     
     results += `
-      <a class="list-group-item d-flex justify-content-between hover-slide" href="#">
+      <a class="routeListItem list-group-item d-flex justify-content-between hover-slide" href="#">
         <div>
           <h4 class="fs-20 fw-bold mb-0">${name}</h4>
           <p class="fs-14 text-88 mb-0">${departure} - ${destination}</p>

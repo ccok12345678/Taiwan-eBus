@@ -9,19 +9,35 @@
   }
 }
 
-.aside-header {
+.aside {
+  position: relative;
 
-  &:focus-within .busRouteInput,
-  &:focus-within .busRouteBtn {
-    box-shadow: none;
-    background-color: #d5d5d5;
-    border: none;
+  &-header {
+  
+    &:focus-within .busRouteInput,
+    &:focus-within .busRouteBtn {
+      box-shadow: none;
+      background-color: #d5d5d5;
+      border: none;
+    }
+    
+    &:focus-within .busRouteBtn {
+      background-image: url("../images/icon_delete.svg");
+    }
   }
 
-  &:focus-within .busRouteBtn {
-    background-image: url("../images/icon_delete.svg");
-  }
+}
 
+.showRoute .routeDetailContainer {
+transform: translateX(0);
+}
+
+.routeDetailContainer {
+  position: absolute;
+  top: 0; right: 0; left: 0; bottom: 0;
+  z-index: 2;
+  transform: translateX(-100%);
+  transition: .2s;
 }
 
 .busRouteInput {
