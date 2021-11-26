@@ -60,3 +60,38 @@ transform: translateX(0);
     background-color: #eee;
   }
 }
+
+.item {
+  
+  &-badge {
+    width: 19.54%;
+  }
+
+  &-dot {
+    
+    &-gray {
+      width: 12px;
+      height: 12px;
+      background:#c4c4c4;
+      border-radius: 50%;
+      margin: auto -6px auto auto;
+      border: 2px solid #F8F8F8;
+    }
+
+    &-info {
+      width: 15px;
+      height: 15px;
+      background: $info;
+      border-radius: 50%;
+      margin: auto -7.5px auto auto;
+      border: 2px #fff solid;
+    }
+  }
+
+  &-border-right {
+    border-radius: none;
+    border-top: none;
+    border-left: none;
+    border-right: #c4c4c4 solid 1px;
+  }
+}

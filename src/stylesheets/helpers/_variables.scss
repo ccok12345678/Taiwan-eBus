@@ -90,9 +90,11 @@ $theme-colors: (
   "dark":       $dark,
   "e0":         #e0e0e0,
   "e2":         #e2e2e2,
-  "ee":         #eee, 
+  "ee":         #eee,
+  "e7":         #e7e7e7,
   "d5":         #d5d5d5,
   "f8":         #f8f8f8,
+  "a9":         #a9a9a9,
   "88":         #888,
   "33":         #333,
   "ty":         #3591c5,
@@ -1121,8 +1123,8 @@ $nav-tabs-link-active-bg:           $body-bg !default;
 $nav-tabs-link-active-border-color: $gray-300 $gray-300 $nav-tabs-link-active-bg !default;
 
 $nav-pills-border-radius:           $border-radius !default;
-$nav-pills-link-active-color:       $component-active-color !default;
-$nav-pills-link-active-bg:          $component-active-bg !default;
+$nav-pills-link-active-color:       $white; //$component-active-color !default;
+$nav-pills-link-active-bg:          $success; // $component-active-bg !default;
 // scss-docs-end nav-variables
 
 

@@ -1,0 +1,120 @@
+#routeDetailContainer.routeDetailContainer.d-flex.flex-column.bg-white.vh-100
+  #closePanel.btn.btn-white.mt-3.ms-3.me-auto.py-auto
+    img.me-2(src="../images/icon_back.svg")
+    | 返回搜尋
+  header.panel-header.text-center
+    h3.fs-35.fw-bold.mb-1 300
+    p 台灣大道公車專用道
+    ul#pills-tab.nav.nav-pills.fs-15.pt-2(role='tablist')
+      li.nav-item.w-50.bg-e0.rounded-0.rounded-top(role='presentation')
+        button#pills-goto-tab.nav-link.w-100.text-center.rounded-0.rounded-top.active(data-bs-toggle='pill' data-bs-target='#pills-goto' type='button' role='tab' aria-controls='pills-home' aria-selected='true') 往 #[strong 台中車站] 
+      li.nav-item.w-50.bg-e0.rounded-0.rounded-top(role='presentation')
+        button#pills-backto-tab.w-100.nav-link.text-center.rounded-0.rounded-top(data-bs-toggle='pill' data-bs-target='#pills-backto' type='button' role='tab' aria-controls='pills-profile' aria-selected='false') 往 #[strong 靜宜大學] 
+  .panel-body.mh-100.overflow-auto(heigh="516")
+    #pills-tabContent.tab-content.p-4
+      #pills-goto.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='pills-goto-tab') 
+        #gotoRouteStops.list-group
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-a9 15:20
+            p.fs-14.text-88.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-a9 15:20
+            p.fs-14.text-88.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-info 進站中
+            p.fs-14.fw-bold.my-auto 靜宜大學（專用道）
+            p.text-info.my-auto.ms-auto.me-0 F2E-888 無障礙
+            .item-dot-info
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-info 即將進站
+            p.fs-14.my-auto 靜宜大學（專用道）
+            .item-dot-info
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-success 6分
+            p.fs-14.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-success 6分
+            p.fs-14.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-success 6分
+            p.fs-14.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-success 6分
+            p.fs-14.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-success 6分
+            p.fs-14.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-success 6分
+            p.fs-14.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-success 6分
+            p.fs-14.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.item-border-right.rounded-0.border-bottom-0
+      #pills-backto.tab-pane.fade(role='tabpanel' aria-labelledby='pills-backto-tab')
+        #backtoRouteStops.list-group
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-a9 15:20
+            p.fs-14.text-88.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-a9 15:20
+            p.fs-14.text-88.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-info 進站中
+            p.fs-14.fw-bold.my-auto 靜宜大學（專用道）
+            p.text-info.my-auto.ms-auto.me-0 F2E-888 無障礙
+            .item-dot-info
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-info 即將進站
+            p.fs-14.my-auto 靜宜大學（專用道）
+            .item-dot-info
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-success 6分
+            p.fs-14.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-success 6分
+            p.fs-14.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-success 6分
+            p.fs-14.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-success 6分
+            p.fs-14.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-success 6分
+            p.fs-14.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-success 6分
+            p.fs-14.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.d-flex.px-0.item-border-right.rounded-0
+            span.item-badge.d-block.text-nowrpa.rounded-10.text-white.lh-sm.fs-14.text-center.py-1.me-3.bg-success 6分
+            p.fs-14.my-auto 靜宜大學（專用道）
+            .item-dot-gray
+          .list-group-item.item-border-right.rounded-0.border-bottom-0
+  footer.panel-footer.mt-auto
+    .progress.rounded-0.bg-e7(style='height: 1px')
+      .progress-bar.bg-success(role='progressbar' style='width: 45%; height: 2px;' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100')
+    .d-flex.justify-content-between.fs-14.px-3
+      p.py-2.mb-0 20秒後更新
+      a.py-2.text-decoration-none(href="#" title="點擊更新")
+        img.me-2(src="../images/icon_update.svg")
+        | 立即更新
+
+
