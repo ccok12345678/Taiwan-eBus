@@ -7,7 +7,7 @@ export default function toggleInfoPanel() {
     item.addEventListener('click', e => {
       e.preventDefault()
 
-      getRouteDetail();
+      getRouteDetail(e);
 
       const sideBar = document.querySelector('.aside');
       sideBar.className = 'aside vh-100 d-flex flex-column showRoute';
