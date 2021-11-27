@@ -16,8 +16,8 @@ export default function showSearchResults(routesData, city) {
   routesData.forEach(route => {
     let name = route.RouteName.Zh_tw,
         id = route.RouteUID,
-        departure = route.DepartureStopNameZh,
-        destination = route.DestinationStopNameZh;
+        departure = route.DepartureStopNameZh || '',
+        destination = route.DestinationStopNameZh || '';
     
     results += `
       <a class="routeListItem list-group-item d-flex justify-content-between hover-slide" href="#" data-route-name="${name}" data-route-id="${id}" data-depa="${departure}" data-dest="${destination}">

@@ -15,6 +15,12 @@ export default function toggleInfoPanel() {
       // console.log(e);
     })
   })
+
+  const refreshBtn = document.querySelector('#refreshBtn');
+  refreshBtn.addEventListener('click', e => {
+    e.preventDefault();
+    getRouteDetail(e);
+  })
   
   const closePanel = document.querySelector('#closePanel');
   closePanel.addEventListener('click', e => {
