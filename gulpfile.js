@@ -114,6 +114,14 @@ function browser_sync() {
 
 exports.bs = browser_sync;
 
+// deploy on github page
+function deploy() {
+  return src('./public/**/*')
+    .pipe($.ghPages());
+}
+
+exports.deploy = deploy;
+
 function watching() {
   watch('./src/stylesheets/**/*.scss', buildStyle)
     .on('unlink', e => del(`./public/stylesheets/**/${path.basename(e, 'scss')}.css`));
