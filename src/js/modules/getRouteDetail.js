@@ -1,13 +1,14 @@
 import GetAuthorizationHeader from "./getAurthor.js";
 import choiceCity from "./choiceCity.js";
 import showRoute from "./showRoute.js";
+import showStopPosition from "./showStopPosition.js";
 
 let goTime = [],
     backTime = [],
     goStops = [],
     backStops = [];
 
-export default function getRouteDetail(e) {
+export default function getRouteDetail(e, map, markerLayers) {
 
   const routename = e.target.dataset.routeName,
         routeId = e.target.dataset.routeId,
@@ -33,12 +34,12 @@ export default function getRouteDetail(e) {
 
 
   // get bus stop info
-  getBusStop(routename, routeId, city);
+  getBusStop(routename, routeId, city, map, markerLayers);
 
 }
 
 // 各站列表
-function getBusStop(routename, routeId, city) {
+function getBusStop(routename, routeId, city, map, markerLayers) {
   axios({
     method: 'get',
     baseURL: 'https://ptx.transportdata.tw/MOTC/',
@@ -54,7 +55,8 @@ function getBusStop(routename, routeId, city) {
       stopData[0].Stops.forEach(obj => {
         goStops.push({
           stopId: obj.StopUID,
-          stopname: obj.StopName.Zh_tw
+          stopName: obj.StopName.Zh_tw,
+          stopPosition: [obj.StopPosition.PositionLat, obj.StopPosition.PositionLon]
         })
       })
 
@@ -63,7 +65,8 @@ function getBusStop(routename, routeId, city) {
         stopData[1].Stops.forEach(obj => {
           backStops.push({
             stopId: obj.StopUID,
-            stopname: obj.StopName.Zh_tw
+            stopName: obj.StopName.Zh_tw,
+            stopPosition: [obj.StopPosition.PositionLat, obj.StopPosition.PositionLon]
           })
         })
       }
@@ -76,14 +79,14 @@ function getBusStop(routename, routeId, city) {
       showRoute(backStops, false);
 
       // get estimate time
-      getEstimatetime(routename, routeId, city);
+      getEstimatetime(routename, routeId, city, map, markerLayers);
 
     })
     .catch(err => console.log(err))
 }
 
 // 取得預估到站時間
-function getEstimatetime(routename, routeId, city) {
+function getEstimatetime(routename, routeId, city, map, markerLayers) {
 
   axios({
     method: 'get',
@@ -227,6 +230,15 @@ function getEstimatetime(routename, routeId, city) {
       goTime = [];
       backStops = [];
       backTime = [];
+
+      const stops = document.querySelectorAll('.stops-item');
+      stops.forEach(stop => {
+        stop.addEventListener('click', e => {
+          e.preventDefault();
+          // markerLayers.clearLayers();
+          showStopPosition(e, map, markerLayers);
+        })
+      })
     })
     .catch(err => console.log(err));
 }

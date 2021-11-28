@@ -84,3 +84,29 @@ transform: translateX(0);
     border-right: #c4c4c4 solid 1px;
   }
 }
+
+.leaflet-popup {
+
+  &-tip {
+    display: none;
+  }
+
+  &-content {
+    margin: 0;
+    
+    &-wrapper {
+      text-align: center;
+      background: none;
+      box-shadow: none;
+      // border: none;
+      padding: 0;
+      // outline: none;
+    
+    }
+  }
+}
+
+.stop-popup {
+  min-width: 77px;
+  border: 2px #fff solid;
+}

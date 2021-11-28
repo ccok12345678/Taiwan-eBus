@@ -10,7 +10,6 @@ export default function setMap(lat, lng, map) {
   map.setView([lat, lng], 13);
 
  // current spot
-
   const markerCurrentLocation = L.icon({
     iconUrl: '../images/marker_currentLocation.svg',
     shadowUrl: '../images/marker_shadow.svg',
@@ -33,7 +32,7 @@ export default function setMap(lat, lng, map) {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 20,
     minzoom: 8,
-    id: 'mapbox/light-v10',  // 'ccok12345678/ckwhnz3h12ex814pk9xisgjsu',
+    id: 'mapbox/light-v10',
     tileSize: 512,
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoiY2NvazEyMzQ1Njc4IiwiYSI6ImNrdm5ncWdhbjF1am0ydW10ZXllcXo4cWcifQ.j2BTK9bT7990xsvmVWsWrQ'

@@ -5,7 +5,7 @@ import toggleInfoPanel from "./toggleInfoPanel.js";
 import choiceCity from "./choiceCity.js";
 
 
-export default function getRouteDataByCity(map, layerGroup) {
+export default function getRouteDataByCity(map, lineLayers, markerLayers) {
 
   const city = choiceCity();
 
@@ -18,7 +18,7 @@ export default function getRouteDataByCity(map, layerGroup) {
     .then(res => {
       const allRoutes = res.data;
       showSearchResults(allRoutes, city);
-      toggleInfoPanel(map, layerGroup);
+      toggleInfoPanel(map, lineLayers, markerLayers);
 
       return allRoutes;
     })
@@ -29,12 +29,12 @@ export default function getRouteDataByCity(map, layerGroup) {
       
       searchBtn.addEventListener('click', e => {
         searchRoutes(routes, city);
-        toggleInfoPanel(map, layerGroup);
+        toggleInfoPanel(map, lineLayers, markerLayers);
       })
       
       searchInput.addEventListener('input', e => {
         searchRoutes(routes, city);
-        toggleInfoPanel(map, layerGroup);
+        toggleInfoPanel(map, lineLayers, markerLayers);
       })
       
       buttonKeyboard.addEventListener('click', e => {
@@ -42,7 +42,7 @@ export default function getRouteDataByCity(map, layerGroup) {
           return;
         }
         searchRoutes(routes, city);
-        toggleInfoPanel(map, layerGroup);
+        toggleInfoPanel(map, lineLayers, markerLayers);
       })
       
 

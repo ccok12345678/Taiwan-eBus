@@ -23,7 +23,7 @@ init();
 export default function init() {
   
   if (!document.querySelector('.index')) {
-    getRouteDataByCity(map, busLines);
+    getRouteDataByCity(map, busLines, markers);
     buttonKeyboard();
     getCurrentLocation(map, markers, setMap);
   }

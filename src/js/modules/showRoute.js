@@ -5,8 +5,9 @@ export default function showRoute(stops, isGo) {
 
   let busStops = '';
   stops.forEach(stop => {
-    let name = stop.stopname,
+    let name = stop.stopName,
         id = stop.stopId,
+        position = stop.stopPosition,
         go = '';
 
     if (isGo) {
@@ -16,10 +17,10 @@ export default function showRoute(stops, isGo) {
     }
 
     busStops += `
-      <a class="list-group-item d-flex px-0 item-border-right rounded-0 hover-bg-ee" href="#" data-stopId="${id}" data-stopName="${name}">
-        <span class="item-badge-${go} item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-a9" data-stopId="${id}" data-stopName="${name}">未發車</span>
-        <p class="item-name-${go} fs-14 text-88 my-auto" data-stopId="${id}" data-stopName="${name}">${name}</p>
-        <div class="item-dot-${go} item-dot-gray" data-stopId="${id}" data-stopName="${name}"></div>
+      <a class="stops-item list-group-item d-flex px-0 item-border-right rounded-0 hover-bg-ee" href="#" data-stopId="${id}" data-stopName="${name}" data-stopPosition="${position}">
+        <span class="item-badge-${go} item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-a9" data-stopId="${id}" data-stopName="${name}" data-stopPosition="${position}">未發車</span>
+        <p class="item-name-${go} fs-14 text-88 my-auto" data-stopId="${id}" data-stopName="${name}" data-stopPosition="${position}">${name}</p>
+        <div class="item-dot-${go} item-dot-gray" data-stopId="${id}" data-stopName="${name}" data-stopPosition="${position}"></div>
       </a>
     `;
     
