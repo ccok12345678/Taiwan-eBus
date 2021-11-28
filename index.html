@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Designer: 鹽酥G; front-end: Karl Yang, ccok12345678@hotmail.com">
+    <meta name="description" content="The F2E 3rd前端修練精神時光屋作品，Week 3 - 全台公車動態時刻查詢應用服務。資料來源:TDX, https://tdx.transportdata.tw/">
+    <meta name="keywords" content="Taiwan, bus, communicate, map, 臺灣, 台灣, 公車, 交通, 通勤, 公車時刻, 公車路線">
+    <meta property="og:description" content="The F2E 3rd前端修練精神時光屋作品，Week 3 - 全台公車動態時刻查詢應用服務。">
+    <meta property="og:title" content="台灣公車e點通 Taiwan Bus+">
+    <meta name="twitter:title" content="台灣公車e點通 Taiwan Bus+">
+    <title>台灣公車e點通 Taiwan Bus+</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="">
+      <link rel="stylesheet" href="stylesheets/all.css">
+      <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+      <meta property="og:image" content="images/logo_og.png">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white text-black fw-normal shadow">
+      <div class="container-lg mx-lg-6 mx-md-5 mx-3 px-0"><a class="index navbar-brand d-sm-flex d-none py-1" href="index.html" title="台灣公車ｅ點通"><img src="images/logo_header.png" alt="a man waiting the bus" width="37.56" height="40.62">
+              <div class="ms-2 ms-md-4 my-auto">
+                <h1 class="fs-15 fw-bold mb-0">台灣公車ｅ點通</h1>
+                <h2 class="fs-h6 fw-light mb-0">Taiwan Bus+</h2>
+              </div></a><a class="index navbar-brand d-flex align-items-center d-sm-none d-flex" href="index.html" title="台灣公車ｅ點通"><img src="images/logo_header.png" alt="a man waiting the bus" width="36" height="35.87">
+              <div class="ms-2 ms-md-4 my-auto">
+                <h1 class="fs-13 fw-bold mb-0">台灣公車ｅ點通</h1>
+                <h2 class="fs-10 fw-light mb-0">Taiwan Bus+</h2>
+              </div></a>
+        <div class="navbar-nav fs-15 w-45 justify-content-between flex-row d-none d-md-flex nowrap"><a class="nav-link text-black fw-normal hover-slide" href="#" title="施工中……">附近站牌</a><a class="nav-link text-black fw-normal hover-slide" href="#" title="施工中……">路線規劃</a><a class="nav-link text-black fw-normal hover-slide" href="#" title="施工中……">站點查詢</a><a class="nav-link text-black fw-normal hover-slide" href="#" title="施工中……">收藏站牌</a></div>
+        <div class="navbar-nav fs-15 flex-row d-none d-lg-flex"><i class="bi bi-globe fs-h2 me-1"></i><a class="nav-link text-black fw-bold" href="#">中文</a>
+          <div class="my-auto text-black">|</div><a class="nav-link text-black fw-normal text-muted" href="#" title="Building……">English</a>
+        </div>
+        <div class="navbar-nav fs-15 d-md-none ms-auto"><a class="nav-link text-black fs-h6 me-2" href="#" title="施工中……">附近站牌</a></div>
+        <button class="d-md-none d-block border-0 bg-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-controls="offcanvasRight"><span class="fas fa-bars fs-15 p-2"></span></button>
+        <div class="offcanvas offcanvas-end border-0 w-70 bd-filter d-md-none" id="offcanvasNav" tabindex="-1" aria-labelledby="offcanvasRightLabel">
+          <div class="offcanvas-header border-bottom pb-4 pt-4"><a class="index navbar-brand d-sm-flex d-none py-1" href="index.html" title="台灣公車ｅ點通"><img src="images/logo_header.png" alt="a man waiting the bus" width="37.56" height="40.62">
+                      <div class="ms-2 ms-md-4 my-auto">
+                        <h1 class="fs-15 fw-bold mb-0">台灣公車ｅ點通</h1>
+                        <h2 class="fs-h6 fw-light mb-0">Taiwan Bus+</h2>
+                      </div></a><a class="index navbar-brand d-flex align-items-center d-sm-none d-flex" href="index.html" title="台灣公車ｅ點通"><img src="images/logo_header.png" alt="a man waiting the bus" width="36" height="35.87">
+                      <div class="ms-2 ms-md-4 my-auto">
+                        <h1 class="fs-13 fw-bold mb-0">台灣公車ｅ點通</h1>
+                        <h2 class="fs-10 fw-light mb-0">Taiwan Bus+</h2>
+                      </div></a>
+            <button class="btn-close text-reset my-auto" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body p-0">
+            <div class="navbar-nav fs-h6 w-45 justify-content-between w-100"><a class="nav-link text-black fw-normal border-bottom p-2 hover-slide" href="#" title="施工中……"> 
+                <p class="py-1 m-0">附近站牌</p></a><a class="nav-link text-black fw-normal border-bottom p-2 hover-slide" href="#" title="施工中……"> 
+                <p class="py-1 m-0">路線規劃</p></a><a class="nav-link text-black fw-normal border-bottom p-2 hover-slide" href="#" title="施工中……"> 
+                <p class="py-1 m-0">站點查詢</p></a><a class="nav-link text-black fw-normal border-bottom p-2 hover-slide" href="#" title="施工中……"> 
+                <p class="py-1 m-0">收藏站牌</p></a></div>
+            <div class="navbar-nav fs-h6 d-flex flex-row justify-content-around align-items-center py-3 px-6"><i class="bi bi-globe me-1"></i><a class="nav-link text-black fw-bold" href="#">中文</a>
+              <div class="my-auto text-black">|</div><a class="nav-link text-black fw-normal disabled" href="#" title="Building……">English</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="banner bg-cover">
+      <div class="text-vertical-lr text-white d-none d-sm-block">
+        <p class="fw-light fs-14 text-uppercase m-0">Taiwan Bus+</p>
+        <p class="banner-text fs-26 m-1">台灣公車動態</p>
+        <p class="banner-text fs-26 fw-bold m-0">　時刻查詢系統</p>
+      </div>
+      <div class="text-vertical-lr text-white d-block d-sm-none">
+        <p class="fw-light fs-10 text-uppercase m-0">Taiwan Bus+</p>
+        <p class="banner-text fs-h4 m-1">台灣公車動態</p>
+        <p class="banner-text fs-h4 fw-bold m-0">　時刻查詢系統</p>
+      </div>
+    </div>
+    <div class="container-fluid bg-light py-3">
+      <div class="row g-3">
+        <div class="col-6 col-sm-4 col-lg-2"><a class="d-block text-danger text-decoration-none py-2 py-sm-3 shadow-sm hover-move rounded-4 text-center bg-white" href="./pages/taipei.html" title="目前只有台北市……"><img class="mb-1 mb-sm-2 mt-3 hover-slide" src="./images/busIcon_taipei.svg" alt="Taipei/ New Taipei City">
+            <h5 class="fw-bold fs-16 my-1">台北市/新北市</h5>
+            <p>Taipei/New Taipei</p></a></div>
+        <div class="col-6 col-sm-4 col-lg-2"><a class="d-block text-ty text-decoration-none py-2 py-sm-3 shadow-sm hover-move rounded-4 text-center bg-white" href="./pages/taoyuan.html" title="查詢桃園公車"><img class="mb-1 mb-sm-2 mt-3 hover-slide" src="./images/busIcon_taoyuan.svg" alt="Taoyuan">
+            <h5 class="fw-bold fs-16 my-1">桃園市</h5>
+            <p>Taoyuan</p></a></div>
+        <div class="col-6 col-sm-4 col-lg-2"><a class="d-block text-info text-decoration-none py-2 py-sm-3 shadow-sm hover-move rounded-4 text-center bg-white" href="./pages/taichung.html" title="查詢台中公車"><img class="mb-1 mb-sm-2 mt-3 hover-slide" src="./images/busIcon_taichung.svg" alt="Taichung City">
+            <h5 class="fw-bold fs-16 my-1">台中市</h5>
+            <p>Taichung</p></a></div>
+        <div class="col-6 col-sm-4 col-lg-2"><a class="d-block text-tn text-decoration-none py-2 py-sm-3 shadow-sm hover-move rounded-4 text-center bg-white" href="./pages/tainan.html" title="查詢台南公車"><img class="mb-1 mb-sm-2 mt-3 hover-slide" src="./images/busIcon_tainan.svg" alt="Tainan City">
+            <h5 class="fw-bold fs-16 my-1">台南市</h5>
+            <p>Taina</p></a></div>
+        <div class="col-6 col-sm-4 col-lg-2"><a class="d-block text-ks text-decoration-none py-2 py-sm-3 shadow-sm hover-move rounded-4 text-center bg-white" href="./pages/kaohsiung.html" title="查詢高雄公車"><img class="mb-1 mb-sm-2 mt-3 hover-slide" src="./images/busIcon_kaohsiung.svg" alt="Kaohsiung City">
+            <h5 class="fw-bold fs-16 my-1">高雄市</h5>
+            <p>Kaohsiung</p></a></div>
+        <div class="col-6 col-sm-4 col-lg-2"><a class="d-block text-other text-decoration-none py-2 py-sm-3 shadow-sm hover-move rounded-4 text-center bg-white disabled" href="#" title="施工中……"><img class="mb-1 mb-sm-2 mt-3 hover-slide" src="./images/busIcon_other.svg" alt="others">
+            <h5 class="fw-bold fs-16 my-1">其他地區</h5>
+            <p>Other City</p></a></div>
+      </div>
+    </div>
+    <footer class="bg-dark text-white d-flex p-1">
+      <p class="fs-h6 d-none d-sm-block p-3 m-auto">Copyright © 2021 台灣公車 e 點通 All rights reserved.</p>
+      <p class="fs-10 d-block d-sm-none p-2 m-auto">Copyright © 2021 台灣公車 e 點通 All rights reserved.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha.min.js"> </script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+        <script src="./js/vendor.js"> </script>
+        <script src="./js/main.js" type="module"> </script>
+  </body>
+</html>

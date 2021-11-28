@@ -1,0 +1,33 @@
+
+<div class="routeDetailContainer d-flex flex-column bg-white vh-100" id="routeDetailContainer">
+  <div class="btn btn-white mt-3 ms-3 me-auto py-auto" id="closePanel"><img class="me-2" src="../images/icon_back.svg"/>返回搜尋</div>
+  <header class="panel-header text-center">
+    <h3 class="fs-35 fw-bold mb-1" id="routeName"> </h3>
+    <ul class="nav nav-pills fs-15 pt-2" id="pills-tab" role="tablist">
+      <li class="nav-item w-50 bg-e0 rounded-0 rounded-top" role="presentation">
+        <button class="nav-link w-100 text-center rounded-0 rounded-top active" id="pills-goto-tab" data-bs-toggle="pill" data-bs-target="#pills-goto" type="button" role="tab" aria-controls="pills-home" aria-selected="true"> </button>
+      </li>
+      <li class="nav-item w-50 bg-e0 rounded-0 rounded-top" role="presentation">
+        <button class="w-100 nav-link text-center rounded-0 rounded-top" id="pills-backto-tab" data-bs-toggle="pill" data-bs-target="#pills-backto" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"> </button>
+      </li>
+    </ul>
+  </header>
+  <div class="panel-body mh-100 overflow-auto" heigh="516">
+    <div class="tab-content p-4" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-goto" role="tabpanel" aria-labelledby="pills-goto-tab"> 
+        <div class="list-group" id="gotoRouteStops"></div>
+      </div>
+      <div class="tab-pane fade" id="pills-backto" role="tabpanel" aria-labelledby="pills-backto-tab">
+        <div class="list-group" id="backtoRouteStops"></div>
+      </div>
+    </div>
+  </div>
+  <footer class="panel-footer mt-auto">
+    <div class="progress rounded-0 bg-e7" style="height: 1px">
+      <div class="progress-bar bg-success" role="progressbar" style="width: 45%; height: 2px;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="d-flex justify-content-between fs-14 px-3">
+      <p class="py-2 mb-0" title="功能建設中">(尚無自動更新)</p><a class="py-2 text-decoration-none disabl" id="refreshBtn" href="#"><img class="me-2" src="../images/icon_update.svg"/>立即更新</a>
+    </div>
+  </footer>
+</div>

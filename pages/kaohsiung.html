@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Designer: 鹽酥G; front-end: Karl Yang, ccok12345678@hotmail.com">
+    <meta name="description" content="The F2E 3rd前端修練精神時光屋作品，Week 3 - 全台公車動態時刻查詢應用服務。資料來源:TDX, https://tdx.transportdata.tw/">
+    <meta name="keywords" content="Taiwan, bus, communicate, map, 臺灣, 台灣, 公車, 交通, 通勤, 公車時刻, 公車路線">
+    <meta property="og:description" content="The F2E 3rd前端修練精神時光屋作品，Week 3 - 全台公車動態時刻查詢應用服務。">
+    <meta property="og:title" content="台灣公車e點通 Taiwan Bus+">
+    <meta name="twitter:title" content="台灣公車e點通 Taiwan Bus+">
+    <title>台灣公車e點通 Taiwan Bus+</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="">
+      <link rel="stylesheet" href="../stylesheets/all.css">
+      <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
+      <meta property="og:image" content="../images/logo_og.png">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white text-black fw-normal shadow">
+      <div class="container-lg mx-lg-6 mx-md-5 mx-3 px-0"><a class="navbar-brand d-sm-flex d-none" href="../index.html" title="台灣公車ｅ點通"><img src="../images/logo_header.png" alt="a man waiting the bus" width="37.56" height="40.62">
+              <div class="ms-2 ms-md-4 my-auto">
+                <h1 class="fs-15 fw-bold mb-0">台灣公車ｅ點通</h1>
+                <h2 class="fs-h6 fw-light mb-0">Taiwan Bus+</h2>
+              </div></a><a class="navbar-brand d-flex align-items-center d-sm-none d-flex" href="../index.html" title="台灣公車ｅ點通"><img src="../images/logo_header.png" alt="a man waiting the bus" width="36" height="35.87">
+              <div class="ms-2 ms-md-4 my-auto">
+                <h1 class="fs-13 fw-bold mb-0">台灣公車ｅ點通</h1>
+                <h2 class="fs-10 fw-light mb-0">Taiwan Bus+</h2>
+              </div></a>
+        <div class="navbar-nav fs-15 w-45 justify-content-between flex-row d-none d-md-flex nowrap"><a class="nav-link text-black fw-normal hover-slide" href="#" title="施工中……">附近站牌</a><a class="nav-link text-black fw-normal hover-slide" href="#" title="施工中……">路線規劃</a><a class="nav-link text-black fw-normal hover-slide" href="#" title="施工中……">站點查詢</a><a class="nav-link text-black fw-normal hover-slide" href="#" title="施工中……">收藏站牌</a></div>
+        <div class="navbar-nav fs-15 flex-row d-none d-lg-flex"><i class="bi bi-globe fs-h2 me-1"></i><a class="nav-link text-black fw-bold" href="#">中文</a>
+          <div class="my-auto text-black">|</div><a class="nav-link text-black fw-normal text-muted" href="#" title="Building……">English</a>
+        </div>
+        <div class="navbar-nav fs-15 d-md-none ms-auto"><a class="nav-link text-black fs-h6 me-2" href="#" title="施工中……">附近站牌</a></div>
+        <button class="d-md-none d-block border-0 bg-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-controls="offcanvasRight"><span class="fas fa-bars fs-15 p-2"></span></button>
+        <div class="offcanvas offcanvas-end border-0 w-70 bd-filter d-md-none" id="offcanvasNav" tabindex="-1" aria-labelledby="offcanvasRightLabel">
+          <div class="offcanvas-header border-bottom pb-4 pt-4"><a class="navbar-brand d-sm-flex d-none" href="../index.html" title="台灣公車ｅ點通"><img src="../images/logo_header.png" alt="a man waiting the bus" width="37.56" height="40.62">
+                      <div class="ms-2 ms-md-4 my-auto">
+                        <h1 class="fs-15 fw-bold mb-0">台灣公車ｅ點通</h1>
+                        <h2 class="fs-h6 fw-light mb-0">Taiwan Bus+</h2>
+                      </div></a><a class="navbar-brand d-flex align-items-center d-sm-none d-flex" href="../index.html" title="台灣公車ｅ點通"><img src="../images/logo_header.png" alt="a man waiting the bus" width="36" height="35.87">
+                      <div class="ms-2 ms-md-4 my-auto">
+                        <h1 class="fs-13 fw-bold mb-0">台灣公車ｅ點通</h1>
+                        <h2 class="fs-10 fw-light mb-0">Taiwan Bus+</h2>
+                      </div></a>
+            <button class="btn-close text-reset my-auto" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body p-0">
+            <div class="navbar-nav fs-h6 w-45 justify-content-between w-100"><a class="nav-link text-black fw-normal border-bottom p-2 hover-slide" href="#" title="施工中……"> 
+                <p class="py-1 m-0">附近站牌</p></a><a class="nav-link text-black fw-normal border-bottom p-2 hover-slide" href="#" title="施工中……"> 
+                <p class="py-1 m-0">路線規劃</p></a><a class="nav-link text-black fw-normal border-bottom p-2 hover-slide" href="#" title="施工中……"> 
+                <p class="py-1 m-0">站點查詢</p></a><a class="nav-link text-black fw-normal border-bottom p-2 hover-slide" href="#" title="施工中……"> 
+                <p class="py-1 m-0">收藏站牌</p></a></div>
+            <div class="navbar-nav fs-h6 d-flex flex-row justify-content-around align-items-center py-3 px-6"><i class="bi bi-globe me-1"></i><a class="nav-link text-black fw-bold" href="#">中文</a>
+              <div class="my-auto text-black">|</div><a class="nav-link text-black fw-normal disabled" href="#" title="Building……">English</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <nav class="d-flex px-lg-6 px-md-5 px-3 mx-0 bg-light" aria-label="breadcrumb">
+      <ol class="breadcrumb my-2 fs-h6">
+        <li class="breadcrumb-item d-none d-sm-block"><a class="text-decoration-none" href="../index.html">首頁</a></li>
+            <li class="breadcrumb-item active d-none d-sm-block" id="kaohsiung" aria-current="page">高雄市</li>
+            <div class="active d-block d-sm-none" aria-current="page"><img class="me-1" src="../images/icon_location.svg">高雄市</div>
+      </ol>
+      <div class="ms-auto my-auto d-flex"><a class="text-decoration-none me-2 py-2 visually-hidden" href="#" title="取得網址"> <img class="me-1" src="../images/icon_link.svg" alt="information">複製連結</a><a class="text-decoration-none ms-1 me-2 py-2" href="#" title="施工中……"><img class="me-1" src="../images/icon_info.svg" alt="information">時刻表</a><a class="text-decoration-none ms-1 me-2 py-2 visually-hidden" href="#"><img class="me-1" src="../images/icon_map.svg" alt="information">地圖</a><a class="text-decoration-none ms-1 me-2 py-2 visually-hidden" href="#"><img class="me-1" src="../images/icon_pin.svg">路線</a></div>
+    </nav>
+    <div class="row g-0">
+      <div class="col-12 col-md-4">
+        <aside class="aside vh-100 d-flex flex-column">
+          <form class="aside-header input-group p-3" id="routeSearchForm">
+            <input class="busRouteInput form-control border-0 rounded-start-3" id="routeSearchInput" type="text" placeholder="輸入公車路線 / 起迄方向名或關鍵字" aria-label="bus routes" aria-describedby="button-addon2">
+            <button class="visually-hidden" id="inputSubmitBtn" type="submit">提交</button>
+            <button class="busRouteBtn btn btn-ee py-2 px-db py-2 rounded-10-3" id="inputCancelBtn" type="reset"></button>
+          </form>
+          <div class="aside-body mh-100 overflow-auto">
+            <div class="px-4 pt-2" id="busRouteResult">
+              <div class="list-group list-group-flush" id="searchResultsContainer"></div>
+            </div>
+          </div>
+          <div class="aside-footer mt-auto text-center">
+            <div class="bg-light py-4" id="buttonKeyboard">
+              <button class="fs-14 btn btn-d5 px-0 py-2 w-20 mb-2 me-1 rounded-10" type="button">1</button>
+              <button class="fs-14 btn btn-d5 px-0 py-2 w-20 mb-2 mx-2 rounded-10" type="button">2</button>
+              <button class="fs-14 btn btn-d5 px-0 py-2 w-20 mb-2 ms-1 rounded-10" type="button">3</button>
+              <div class="w-100"></div>
+              <button class="fs-14 btn btn-d5 px-0 py-2 w-20 mb-2 me-1 rounded-10" type="button">4</button>
+              <button class="fs-14 btn btn-d5 px-0 py-2 w-20 mb-2 mx-2 rounded-10" type="button">5</button>
+              <button class="fs-14 btn btn-d5 px-0 py-2 w-20 mb-2 ms-1 rounded-10" type="button">6</button>
+              <div class="w-100"></div>
+              <button class="fs-14 btn btn-d5 px-0 py-2 w-20 mb-2 me-1 rounded-10" type="button">7</button>
+              <button class="fs-14 btn btn-d5 px-0 py-2 w-20 mb-2 mx-2 rounded-10" type="button">8</button>
+              <button class="fs-14 btn btn-d5 px-0 py-2 w-20 mb-2 ms-1 rounded-10" type="button">9</button>
+              <div class="w-100"></div>
+              <button class="fs-13 btn btn-danger px-0 py-2 w-20 me-1 rounded-10" type="button">專用道</button>
+              <button class="fs-14 btn btn-d5 px-0 py-2 w-20 mx-2 rounded-10" type="button">0</button>
+              <button class="fs-13 btn btn-d5 px-0 py-2 w-20 ms-1 rounded-10" type="button">清除</button>
+            </div>
+          </div>
+          <div class="routeDetailContainer d-flex flex-column bg-white vh-100" id="routeDetailContainer">
+            <div class="btn btn-white mt-3 ms-3 me-auto py-auto" id="closePanel"><img class="me-2" src="../images/icon_back.svg">返回搜尋</div>
+            <header class="panel-header text-center">
+              <h3 class="fs-35 fw-bold mb-1" id="routeName"> </h3>
+              <ul class="nav nav-pills fs-15 pt-2" id="pills-tab" role="tablist">
+                <li class="nav-item w-50 bg-e0 rounded-0 rounded-top" role="presentation">
+                  <button class="nav-link w-100 text-center rounded-0 rounded-top active" id="pills-goto-tab" data-bs-toggle="pill" data-bs-target="#pills-goto" type="button" role="tab" aria-controls="pills-home" aria-selected="true"> </button>
+                </li>
+                <li class="nav-item w-50 bg-e0 rounded-0 rounded-top" role="presentation">
+                  <button class="w-100 nav-link text-center rounded-0 rounded-top" id="pills-backto-tab" data-bs-toggle="pill" data-bs-target="#pills-backto" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"> </button>
+                </li>
+              </ul>
+            </header>
+            <div class="panel-body mh-100 overflow-auto" heigh="516">
+              <div class="tab-content p-4" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-goto" role="tabpanel" aria-labelledby="pills-goto-tab"> 
+                  <div class="list-group" id="gotoRouteStops"></div>
+                </div>
+                <div class="tab-pane fade" id="pills-backto" role="tabpanel" aria-labelledby="pills-backto-tab">
+                  <div class="list-group" id="backtoRouteStops"></div>
+                </div>
+              </div>
+            </div>
+            <footer class="panel-footer mt-auto">
+              <div class="progress rounded-0 bg-e7" style="height: 1px">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 45%; height: 2px;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="d-flex justify-content-between fs-14 px-3">
+                <p class="py-2 mb-0" title="功能建設中">(尚無自動更新)</p><a class="py-2 text-decoration-none disabl" id="refreshBtn" href="#"><img class="me-2" src="../images/icon_update.svg">立即更新</a>
+              </div>
+            </footer>
+          </div>
+        </aside>
+      </div>
+      <div class="col-12 col-md-8">
+        <div class="bus-map vh-100 w-100 hidden-md" id="busMap"></div>
+      </div>
+    </div>
+    <footer class="bg-dark text-white d-flex p-1">
+      <p class="fs-h6 d-none d-sm-block p-3 m-auto">Copyright © 2021 台灣公車 e 點通 All rights reserved.</p>
+      <p class="fs-10 d-block d-sm-none p-2 m-auto">Copyright © 2021 台灣公車 e 點通 All rights reserved.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha.min.js"> </script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+        <script src="../js/vendor.js"> </script>
+        <script src="../js/main.js" type="module"> </script>
+  </body>
+</html>
