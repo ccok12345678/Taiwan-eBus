@@ -1,6 +1,8 @@
 import getRouteDetail from "./getRouteDetail.js";
+import showRouteOnMap from "./showRouteOnMap.js";
 
-export default function toggleInfoPanel() {
+// show detail route info
+export default function toggleInfoPanel(map, layerGroup) {
 
   const resultItems = document.querySelectorAll('.routeListItem');
   resultItems.forEach(item => {
@@ -8,11 +10,11 @@ export default function toggleInfoPanel() {
       e.preventDefault()
 
       getRouteDetail(e);
+      showRouteOnMap(e, map, layerGroup);
 
       const sideBar = document.querySelector('.aside');
       sideBar.className = 'aside vh-100 d-flex flex-column showRoute';
 
-      // console.log(e);
     })
   })
 

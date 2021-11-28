@@ -4,13 +4,13 @@ import getCurrentLocation from "./modules/getCurrentLocation.js";
 import setMap from "./modules/setMap.js";
 
 // map
-
 const map = L.map('busMap', {
   closePopupOnClick: false,
   zoomControl: false
 });
 
-const markers = new L.layerGroup().addTo(map);
+const markers = new L.layerGroup().addTo(map),
+      busLines = new L.layerGroup().addTo(map);
 
 L.control.zoom({
   position: 'bottomright'
@@ -23,7 +23,7 @@ init();
 export default function init() {
   
   if (!document.querySelector('.index')) {
-    getRouteDataByCity();
+    getRouteDataByCity(map, busLines);
     buttonKeyboard();
     getCurrentLocation(map, markers, setMap);
   }

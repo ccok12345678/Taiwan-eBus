@@ -37,7 +37,7 @@ export default function getRouteDetail(e) {
 
 }
 
-
+// 各站列表
 function getBusStop(routename, routeId, city) {
   axios({
     method: 'get',
@@ -82,7 +82,7 @@ function getBusStop(routename, routeId, city) {
     .catch(err => console.log(err))
 }
 
-
+// 取得預估到站時間
 function getEstimatetime(routename, routeId, city) {
 
   axios({
@@ -119,13 +119,12 @@ function getEstimatetime(routename, routeId, city) {
     .then(res => {
 
       // show go time
-      const goItemBsdges = document.querySelectorAll('.item-badge-go'),
+      const goItemBadges = document.querySelectorAll('.item-badge-go'),
             goItemDots = document.querySelectorAll('.item-dot-go'),
             goNames = document.querySelectorAll('.item-name-go');
 
-
       goTime.forEach(go => {
-        goItemBsdges.forEach(badge => {
+        goItemBadges.forEach(badge => {
 
           let stopid = badge.getAttribute('data-stopId');
 
@@ -173,12 +172,12 @@ function getEstimatetime(routename, routeId, city) {
       })
 
       // show back time
-      const backItemBsdges = document.querySelectorAll('.item-badge-back'),
+      const backItemBadges = document.querySelectorAll('.item-badge-back'),
             backItemDots = document.querySelectorAll('.item-dot-back'),
             backNames = document.querySelectorAll('.item-name-back');
 
       backTime.forEach(back => {
-        backItemBsdges.forEach(badge => {
+        backItemBadges.forEach(badge => {
           let stopid = badge.getAttribute('data-stopId');
 
           if (stopid === back.stopId) {

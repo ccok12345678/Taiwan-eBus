@@ -49,6 +49,11 @@
     transform: translateY(-5px);
   }
 
+  &-bg-ee:hover {
+    background: #eee;
+    transition: all .2s linear;
+  }
+
   
   &-heart-fill {
     width: 18px;
