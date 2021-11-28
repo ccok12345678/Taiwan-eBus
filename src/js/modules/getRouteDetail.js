@@ -133,15 +133,15 @@ function getEstimatetime(routename, routeId, city, map, markerLayers) {
 
           if (stopid === go.stopId) {
             if ((go.estimateTime / 60) <= 1) {
-              badge.className = 'item-badge-go item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-info'
+              badge.className = `item-badge-go-${stopid} item-badge-go item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-info`
               badge.innerHTML = '進站中';
             } else if ((go.estimateTime / 60) > 1 && (go.estimateTime / 60) <= 2) {
-              badge.className = 'item-badge-go item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-info'
+              badge.className = `item-badge-go-${stopid} item-badge-go item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-info`;
               badge.innerHTML = '即將進站';
             } else if (isNaN(go.estimateTime)) {
-              badge.className = 'item-badge-go item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-a9'
+              badge.className = `item-badge-go-${stopid} item-badge-go item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-a9`;
             } else {
-              badge.className = 'item-badge-go item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-success'
+              badge.className = `item-badge-go-${stopid} item-badge-go item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-success`;
               badge.innerHTML = `${Math.floor(go.estimateTime / 60)} 分鐘`;
             }
           }
@@ -185,15 +185,15 @@ function getEstimatetime(routename, routeId, city, map, markerLayers) {
 
           if (stopid === back.stopId) {
             if ((back.estimateTime / 60) <= 1) {
-              badge.className = 'item-badge-back item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-info'
+              badge.className = `item-badge-back-${stopid} item-badge-back item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-info`
               badge.innerHTML = '進站中';
             } else if ((back.estimateTime / 60) > 1 && (back.estimateTime / 60) <= 2) {
-              badge.className = 'item-badge-back item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-info'
+              badge.className = `item-badge-back-${stopid} item-badge-back item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-info`;
               badge.innerHTML = '即將進站';
             } else if (isNaN(back.estimateTime)) {
-              badge.className = 'item-badge-go item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-a9'
+              badge.className = `item-badge-back-${stopid} item-badge-back item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-a9`;
             } else {
-              badge.className = 'item-badge-back item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-success'
+              badge.className = `item-badge-back-${stopid} item-badge-back item-badge d-block text-nowrap rounded-10 text-white lh-sm fs-14 text-center py-1 me-3 bg-success`;
               badge.innerHTML = `${Math.floor(back.estimateTime / 60)} 分鐘`;
             }
           }
